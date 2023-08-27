@@ -4,16 +4,20 @@ const gameController = (() => {
     const boardContainer = document.getElementById('game-container');
     let currentPlayer = "X"; // Initialize the current player
 
-    function playGame(button) {
+    const playerPositions = [];
+
+    function playGame(button, board) {
         if (button.textContent === "") {
+            const buttonIndex = Array.from(boardContainer.children).indexOf(button);
+            board[buttonIndex] = currentPlayer;
             button.textContent = currentPlayer;
             button.disabled = true;
             currentPlayer = currentPlayer === "X" ? "O" : "X";
-            const playerPositions = [];
-            playerPositions.push(currentPlayer);
-            console.log(playerPositions);
             
+            console.log(board);
+           
         }
+        //add in game logic using the array positions 
         
     }
 
@@ -21,7 +25,7 @@ const gameController = (() => {
         let buttonBoard = document.createElement('button');
         buttonBoard.classList.add("game-button");
         buttonBoard.addEventListener('click', function () {
-            playGame(buttonBoard);
+            playGame(buttonBoard, board);
         });
         
         boardContainer.appendChild(buttonBoard);
