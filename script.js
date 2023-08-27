@@ -1,21 +1,38 @@
-const gameController = (() =>{
-    const board = ["", "","","","","","","","",];
 
-    const getBoard = () => board;
-    let boardContainer= document.getElementById('game-container')
-    for(let i =0; i < board.length; i++){
-        let buttonBoard = document.createElement('button');
-        buttonBoard.classList.add("game-button");
-        buttonBoard.addEventListener('click', (e)=>{
-            buttonBoard.textContent = "x";
-            buttonBoard.disabled = "true";
-        });
-        buttonBoard.textContent = board[i];
-        boardContainer.appendChild(buttonBoard);
+const gameController = (() => {
+    const board = ["", "", "", "", "", "", "", "", ""];
+    const boardContainer = document.getElementById('game-container');
+    let currentPlayer = "X"; // Initialize the current player
+
+    function playGame(button) {
+        if (button.textContent === "") {
+            button.textContent = currentPlayer;
+            button.disabled = true;
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            const playerPositions = [];
+            playerPositions.push(currentPlayer);
+            console.log(playerPositions);
+            
+        }
         
     }
-    
+
+    for (let i = 0; i < board.length; i++) {
+        let buttonBoard = document.createElement('button');
+        buttonBoard.classList.add("game-button");
+        buttonBoard.addEventListener('click', function () {
+            playGame(buttonBoard);
+        });
+        
+        boardContainer.appendChild(buttonBoard);
+    }
 })();
+
+
+//Need make Array for player positions
+
+
+
 /*
 create play game function
 Have player1 X and player 2 O and switch between the 2
