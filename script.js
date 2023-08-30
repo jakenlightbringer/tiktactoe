@@ -7,13 +7,14 @@ const gameController = (() => {
     const playerPositions = [];
 
     function playGame(button, board) {
+        
         if (button.textContent === "") {
             const buttonIndex = Array.from(boardContainer.children).indexOf(button);
             board[buttonIndex] = currentPlayer;
             button.textContent = currentPlayer;
             button.disabled = true;
             currentPlayer = currentPlayer === "X" ? "O" : "X";
-            
+            console.log(board.length);
             console.log(board);
            
         }
@@ -22,7 +23,10 @@ const gameController = (() => {
         board[1] == "X" && board[4] == "X" && board[7] == "X" || board[2] == "X" && board[5] == "X" && board[8] == "X" ||
         board[0] == "X" && board[4] == "X" && board[8] == "X" || board[2] == "X" && board[4] == "X" && board[6] == "X"
         ){
-            alert("TEST")
+            alert("Player 1 Wins!")
+            resetBoard(button, board);
+            
+
         }
         else if(board[0] == "O" && board[1] == "O" && board[2] == "O" || board[3] == "O" && board[4] == "O" && board[5] == "O" ||
         board[6] == "O" && board[7] == "O" && board[8] == "O" || board[0] == "O" && board[3] == "O" && board[6] == "O" ||
@@ -31,10 +35,22 @@ const gameController = (() => {
         {
             alert("TEST")
         }
+        else if(board[0] != "" && board[1] != "" && board[2] != "" && board[3] != "" && board[4] != "" && board[5] != "" &&
+        board[6] != "" && board[7] != "" && board[8] != ""){
+            alert("CAT")
+        }
+        
 
         //add in game logic using the array positions 
         
     }
+    function resetBoard(button, board){
+        button.textContent = "";
+        board = ["", "", "", "", "", "", "", "", ""];
+        boardContainer.appendChild(button);
+
+    }
+
 
     for (let i = 0; i < board.length; i++) {
         let buttonBoard = document.createElement('button');
