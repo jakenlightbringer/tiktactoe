@@ -44,12 +44,20 @@ const gameController = (() => {
         //add in game logic using the array positions 
         
     }
-    function resetBoard(button, board){
+    function resetBoard(button, board) {
+        for (let i = 0; i < board.length; i++) {
+            board[i] = "";
+        }
         button.textContent = "";
-        board = ["", "", "", "", "", "", "", "", ""];
-        boardContainer.appendChild(button);
-
+        button.disabled = false; 
+        
+        const buttons = document.querySelectorAll(".game-button")
+        buttons.forEach((btn) =>{
+            btn.textContent = "";
+            btn.disabled = false;
+        });
     }
+    
 
 
     for (let i = 0; i < board.length; i++) {
