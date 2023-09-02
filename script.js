@@ -7,6 +7,7 @@ const gameController = (() => {
     const playerPositions = [];
 
     function playGame(button, board) {
+        const rematchContainer = document.getElementById('rematch-container');
         
         if (button.textContent === "") {
             const buttonIndex = Array.from(boardContainer.children).indexOf(button);
@@ -23,8 +24,17 @@ const gameController = (() => {
         board[1] == "X" && board[4] == "X" && board[7] == "X" || board[2] == "X" && board[5] == "X" && board[8] == "X" ||
         board[0] == "X" && board[4] == "X" && board[8] == "X" || board[2] == "X" && board[4] == "X" && board[6] == "X"
         ){
-            alert("Player 1 Wins!")
-            resetBoard(button, board);
+            //alert("Player 1 Wins!")
+            let rematchButton = document.createElement('button');
+            rematchButton.innerHTML = "Rematch";
+            rematchContainer.appendChild(rematchButton);
+            rematchButton.addEventListener("click", function (){
+                resetBoard(button, board);
+                rematchButton.style.display = "none";
+            });
+            
+            
+            
             
 
         }
@@ -44,20 +54,7 @@ const gameController = (() => {
         //add in game logic using the array positions 
         
     }
-    function resetBoard(button, board) {
-        for (let i = 0; i < board.length; i++) {
-            board[i] = "";
-        }
-        button.textContent = "";
-        button.disabled = false; 
-        
-        const buttons = document.querySelectorAll(".game-button")
-        buttons.forEach((btn) =>{
-            btn.textContent = "";
-            btn.disabled = false;
-        });
-    }
-    
+   
 
 
     for (let i = 0; i < board.length; i++) {
@@ -70,6 +67,22 @@ const gameController = (() => {
         boardContainer.appendChild(buttonBoard);
     }
 })();
+
+function resetBoard(button, board) {
+    for (let i = 0; i < board.length; i++) {
+        board[i] = "";
+    }
+    button.textContent = "";
+    button.disabled = false; 
+    
+    const buttons = document.querySelectorAll(".game-button")
+    buttons.forEach((btn) =>{
+        btn.textContent = "";
+        btn.disabled = false;
+    });
+}
+
+
 
 
 //Need make Array for player positions

@@ -8,3 +8,9 @@
     
     
 }
+button:disabled{
+    background-color: green;
+    font-size: larger;
+    font-size: 60px;
+    
+}
