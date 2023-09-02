@@ -15,6 +15,12 @@ const gameController = (() => {
             button.textContent = currentPlayer;
             button.disabled = true;
             currentPlayer = currentPlayer === "X" ? "O" : "X";
+            if(currentPlayer === "X"){
+                button.style.backgroundColor = 'red';
+            }
+            else{
+                button.style.backgroundColor = "green";
+            }
             console.log(board.length);
             console.log(board);
            
@@ -24,7 +30,11 @@ const gameController = (() => {
         board[1] == "X" && board[4] == "X" && board[7] == "X" || board[2] == "X" && board[5] == "X" && board[8] == "X" ||
         board[0] == "X" && board[4] == "X" && board[8] == "X" || board[2] == "X" && board[4] == "X" && board[6] == "X"
         ){
-            //alert("Player 1 Wins!")
+            alert("Player 1 Wins!")
+            const buttons = document.querySelectorAll(".game-button");
+            for(let i = 0; i < buttons.length; i++){
+                buttons[i].disabled = 'true'
+            }
             let rematchButton = document.createElement('button');
             rematchButton.innerHTML = "Rematch";
             rematchContainer.appendChild(rematchButton);
@@ -72,14 +82,14 @@ function resetBoard(button, board) {
     for (let i = 0; i < board.length; i++) {
         board[i] = "";
     }
-    button.textContent = "";
-    button.disabled = false; 
     
-    const buttons = document.querySelectorAll(".game-button")
-    buttons.forEach((btn) =>{
-        btn.textContent = "";
-        btn.disabled = false;
-    });
+
+    const buttons = document.querySelectorAll(".game-button");
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].style.backgroundColor = "white";
+        buttons[i].textContent = "";
+        buttons[i].disabled = false;
+    }
 }
 
 
