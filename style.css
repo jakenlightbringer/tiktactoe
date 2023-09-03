@@ -6,11 +6,23 @@
     justify-content: center;
     padding-top: 100px;
     
-    
+       
+}
+.game-button{
+    background-color: white;
 }
 button:disabled{
     
     font-size: larger;
     font-size: 60px;
     
+}
+#rematch-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+.rematch-button{
+    font-size: 40px;
+    border-radius: 25px;
 }

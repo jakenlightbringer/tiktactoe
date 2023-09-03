@@ -61,6 +61,7 @@ const gameController = (() => {
             }
             let rematchButton = document.createElement('button');
             rematchButton.innerHTML = "Rematch";
+            rematchButton.classList.add("rematch-button")
             rematchContainer.appendChild(rematchButton);
             rematchButton.addEventListener("click", function (){
                 resetBoard(button, board);
@@ -78,6 +79,7 @@ const gameController = (() => {
             }
             let rematchButton = document.createElement('button');
             rematchButton.innerHTML = "Rematch";
+            rematchButton.classList.add("rematch-button")
             rematchContainer.appendChild(rematchButton);
             rematchButton.addEventListener("click", function (){
                 resetBoard(button, board);
