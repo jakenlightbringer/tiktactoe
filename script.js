@@ -36,6 +36,7 @@ const gameController = (() => {
                 buttons[i].disabled = 'true'
             }
             let rematchButton = document.createElement('button');
+            rematchButton.classList.add("rematch-button")
             rematchButton.innerHTML = "Rematch";
             rematchContainer.appendChild(rematchButton);
             rematchButton.addEventListener("click", function (){
@@ -53,11 +54,36 @@ const gameController = (() => {
         board[1] == "O" && board[4] == "O" && board[7] == "O" || board[2] == "O" && board[5] == "O" && board[8] == "O" ||
         board[0] == "O" && board[4] == "O" && board[8] == "O" || board[2] == "O" && board[4] == "O" && board[6] == "O")
         {
-            alert("TEST")
+            alert("Player 2 Wins!")
+            const buttons = document.querySelectorAll(".game-button");
+            for(let i = 0; i < buttons.length; i++){
+                buttons[i].disabled = 'true'
+            }
+            let rematchButton = document.createElement('button');
+            rematchButton.innerHTML = "Rematch";
+            rematchContainer.appendChild(rematchButton);
+            rematchButton.addEventListener("click", function (){
+                resetBoard(button, board);
+                rematchButton.style.display = "none";
+            });
+            
         }
         else if(board[0] != "" && board[1] != "" && board[2] != "" && board[3] != "" && board[4] != "" && board[5] != "" &&
         board[6] != "" && board[7] != "" && board[8] != ""){
             alert("CAT")
+            
+            const buttons = document.querySelectorAll(".game-button");
+            for(let i = 0; i < buttons.length; i++){
+                buttons[i].disabled = 'true'
+            }
+            let rematchButton = document.createElement('button');
+            rematchButton.innerHTML = "Rematch";
+            rematchContainer.appendChild(rematchButton);
+            rematchButton.addEventListener("click", function (){
+                resetBoard(button, board);
+                rematchButton.style.display = "none";
+            });
+            
         }
         
 
@@ -116,27 +142,4 @@ playButton.addEventListener("click", (e)=>{
 });
 
 
-function assignPlayer(){
-    let playerButtonContainer = document.getElementById("playerSelection");
-    let numButton = 2;
 
-    for(let i = 0; i < numButton; i++){
-        let playerButtonChoice1 = document.createElement('button');
-        playerButtonChoice1.textContent = "Player " + [i+1];
-
-        playerButtonChoice1.addEventListener('click', (e) =>{
-            if(playerButtonChoice1.innerHTML == "Player 1"){
-                const selection = 'X';
-                return selection
-            }
-            else if(playerButtonChoice1.innerHTML == "Player 2"){
-                const selection = "O";
-                return selection
-            }
-        });
-    
-    
-    playerButtonContainer.appendChild(playerButtonChoice1);
-    }
-
-}
